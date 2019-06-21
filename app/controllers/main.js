@@ -1,10 +1,10 @@
 $(document).ready(function () {
   var nguoiDungService = new NguoiDungService();
 
-  //tao function them nguoi dung de dua len git
 
-  function addnguoidung() {
-    comsole.log("dua nguoi dung len git");
+  //chuc nang them nguoi dung
+  function addnguoidung(){
+    console.log("them nguoi dung 2");
   }
 
 
