@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var nguoiDungService = new NguoiDungService();
 
 
@@ -11,7 +11,7 @@ $(document).ready(function() {
   getDanhSachNguoiDung();
 
   //Dom đến nút thêm mới để mở popup
-  $("#btnThemNguoiDung").click(function() {
+  $("#btnThemNguoiDung").click(function () {
     $(".modal-title").html("Thêm người dùng");
 
     var footer = `
@@ -21,7 +21,7 @@ $(document).ready(function() {
   });
 
   //Nút sửa
-  $("body").delegate(".btnSua", "click", function() {
+  $("body").delegate(".btnSua", "click", function () {
     var footer = `
     <button id='btnCapNhat' class="btn btn-success">Cập nhật</button>
 `;
@@ -36,7 +36,7 @@ $(document).ready(function() {
   });
 
   //Cập nhật người dùng
-  $("body").delegate("#btnCapNhat", "click", function() {
+  $("body").delegate("#btnCapNhat", "click", function () {
     /* 
         Lấy dữ liệu từ 6 ô input
         Gọi đến phương thức nguoiDungService.capNhatNguoiDung(truyền vô người dùng cần sửa);
@@ -44,7 +44,7 @@ $(document).ready(function() {
   });
 
   //Thêm người dùng mới
-  $("body").delegate("#btnThem", "click", function() {
+  $("body").delegate("#btnThem", "click", function () {
     var taiKhoan = $("#TaiKhoan").val();
     var hoTen = $("#HoTen").val();
     var matKhau = $("#MatKhau").val();
@@ -64,7 +64,7 @@ $(document).ready(function() {
   });
 
   //Xóa người dùng
-  $("body").delegate(".btnXoa", "click", function() {
+  $("body").delegate(".btnXoa", "click", function () {
     var taiKhoan = $(this).data("taikhoan");
     nguoiDungService.xoaNguoiDung(taiKhoan);
   });
@@ -72,18 +72,18 @@ $(document).ready(function() {
   function getDanhSachNguoiDung() {
     nguoiDungService
       .layDanhSachNguoiDung()
-      .done(function(data) {
+      .done(function (data) {
         localStorage.setItem("DSND", JSON.stringify(data));
         taoBang(data);
       })
-      .fail(function(err) {
+      .fail(function (err) {
         console.log(err);
       });
   }
 
   function taoBang(mang) {
     var content = "";
-    mang.map(function(item, index) {
+    mang.map(function (item, index) {
       content += `
               <tr>
                   <td>${index + 1}</td>
@@ -95,11 +95,11 @@ $(document).ready(function() {
                   <td>${item.TenLoaiNguoiDung}</td>
                   <td>
                       <button class="btn btn-primary btnSua" data-taikhoan="${
-                        item.TaiKhoan
-                      }" data-toggle="modal" data-target="#myModal">Sửa</button>
+        item.TaiKhoan
+        }" data-toggle="modal" data-target="#myModal">Sửa</button>
                       <button class="btn btn-danger btnXoa" data-taikhoan="${
-                        item.TaiKhoan
-                      }">Xóa</button>
+        item.TaiKhoan
+        }">Xóa</button>
                   </td>
               </tr>
           `;
