@@ -1,6 +1,13 @@
 $(document).ready(function() {
   var nguoiDungService = new NguoiDungService();
 
+
+  //chuc nang them nguoi dung
+  function addnguoidung(){
+    console.log("them nguoi dung 2");
+  }
+
+
   getDanhSachNguoiDung();
 
   //Dom đến nút thêm mới để mở popup
